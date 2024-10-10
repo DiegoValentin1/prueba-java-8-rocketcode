@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.diegorogel.taskregister.mapper.TaskMapper">
+
+    <resultMap id="TaskResult" type="com.diegorogel.taskregister.model.Task">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="start_date" property="startDate" />
+    </resultMap>
+
+    <select id="findAll" resultMap="TaskResult">
+        SELECT * FROM tasks;
+    </select>
+
+    <insert id="insertTask">
+        INSERT INTO tasks (name, description, start_date)
+        VALUES (#{name}, #{description}, #{startDate});
+    </insert>
+
+    <delete id="deleteTask">
+        DELETE FROM tasks WHERE id=#{id};
+    </delete>
+</mapper>

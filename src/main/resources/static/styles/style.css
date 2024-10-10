@@ -1,0 +1,138 @@
+body {
+    background-image: url('../rocket.png');
+    background-repeat: repeat;
+    background-size: auto;
+    height: 100vh;
+    margin: 0;
+    background-color: #373131 !important;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #050E2A;
+    font-weight: 200;
+    box-shadow: 2px 2px 30px rgba(216, 216, 216, 0.3);
+    padding: 1rem;
+}
+
+.register{
+    padding: 1rem;
+    width: 70vw;
+    height: 50vh;
+}
+input{
+    background-color: rgb(240, 240, 240) !important;
+}
+textarea{
+    background-color: rgb(240, 240, 240) !important;
+}
+
+.welcome{
+    width: 30vw;
+    height: 30vh;
+}
+
+.add-task{
+    width: 100%;
+}
+
+.mesh{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(39, 39, 39, 0.4);
+    display: grid;
+    place-content: center;
+}
+
+.save-button{
+    width: 100%;
+}
+
+.list-task{
+    width: 70vw;
+    height: 70vh;
+    justify-content: start;
+}
+
+.content{
+    width: 100vw;
+}
+
+.sidebar{
+    color: red;
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+
+.sidebar .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.sidebar .icon:hover {
+    background-color: #555;
+}
+
+.sidebar a {
+    text-decoration: none;
+}
+
+.list-title a {
+    text-decoration: none;
+}
+
+.list-title {
+    display: flex;               /* Utiliza flexbox */
+    justify-content: space-between; /* Espacio entre los hijos */
+    align-items: center;        /* Alinear verticalmente al centro */
+    width: 100%;                /* Ancho del div al 100% */
+    padding: 10px;             /* Añadir algo de padding, opcional */
+    box-sizing: border-box;     /* Incluye el padding en el ancho total */
+}
+
+.list-title .icon {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.list-title .icon:hover {
+    background-color: #555;
+}
+
+.trash-icon{
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.trash-icon:hover{
+    transform: scale(1.5);
+}

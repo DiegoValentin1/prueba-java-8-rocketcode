@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Task Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+
+<div class="mesh">
+    <div th:replace="/fragments/sidebar"></div>
+    <div class="container card register">
+        <h1>Registrar Nueva Tarea</h1>
+        <form  th:action="@{/task/save}" th:object="${task}" method="post" class="add-task">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" name="name" th:field="*{name}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descripción</label>
+                <textarea class="form-control" id="description" name="description"
+                          th:field="*{description}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="startDate" class="form-label">Fecha de Inicio</label>
+                <input type="date" class="form-control" id="startDate" name="startDate" th:field="*{startDate}">
+            </div>
+            <button class="btn btn-success save-button" id="saveButton">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                ¡Tarea guardada exitosamente!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                ¡Todos los campos son necesarios!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('saveButton').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        var name = document.getElementById('name').value;
+        var description = document.getElementById('description').value;
+        var startDate = document.getElementById('startDate').value;
+
+        if (!name || !description || !startDate) {
+            var toastCont = document.getElementById('errorToast');
+            var toastErr = new bootstrap.Toast(toastCont);
+            toastErr.show();
+            return;
+        }
+
+        var toastEl = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastEl);
+        toast.show();
+
+        setTimeout(function () {
+            document.querySelector('.add-task').submit();
+        }, 1000);
+    });
+</script>
+</body>
+
+</html>
